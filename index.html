@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101010">
+<title>EnfuEarn | Promotion Hub</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101010;color:#f8f8f8;
+font-family:Arial,sans-serif;padding:20px;max-width:600px;margin:auto}
+.brand{display:flex;align-items:center;gap:12px;margin:8px 0 28px}
+.logo{background:#e8bb63;color:#171717;border-radius:14px;
+width:48px;height:48px;display:grid;place-items:center;
+font-size:25px;font-weight:900}
+h1{font-size:23px;margin:0}
+.muted{color:#aaa;font-size:13px;margin-top:5px}
+.hero{padding:24px 20px;border-radius:20px;
+background:linear-gradient(135deg,#302619,#171717);
+border:1px solid #4a3b27}
+.tag{color:#e8bb63;font-size:11px;letter-spacing:2px}
+.hero h2{font-size:30px;line-height:1.15;margin:12px 0}
+p{line-height:1.5}
+button{cursor:pointer;font-size:14px;font-weight:bold;
+border:0;border-radius:12px;padding:13px}
+.primary{background:#e8bb63;color:#171717;width:100%}
+h3{font-size:19px;margin:28px 0 14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#1c1c1c;border:1px solid #303030;
+padding:15px;border-radius:16px}
+.card .emoji{font-size:25px}
+.card h4{margin:12px 0 7px;font-size:15px}
+.card p{color:#aaa;font-size:12px;min-height:36px}
+.card button{width:100%;background:#303030;color:white}
+.section{background:#1b1b1b;border-radius:15px;
+padding:16px;margin-top:12px}
+a{color:#e8bb63}
+footer{text-align:center;color:#888;font-size:12px;
+padding:25px 0}
+</style>
+</head>
+<body>
+<header class="brand">
+  <div class="logo">E</div>
+  <div>
+    <h1>EnfuEarn</h1>
+    <div class="muted">Creator Promotion Hub</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="tag">WELCOME TO ENFUEARN</div>
+  <h2>Promote.<br>Reach. Grow.</h2>
+  <p>Explore creator campaigns and find your next
+  promotion opportunity.</p>
+  <button class="primary" onclick="go('offers')">
+    Explore Promotions →
+  </button>
+</section>
+
+<h3 id="offers">Available Categories</h3>
+<div class="grid">
+  <div class="card">
+    <div class="emoji">🎮</div>
+    <h4>Gaming</h4>
+    <p>Gaming content promotion campaigns.</p>
+    <button onclick="apply('Gaming')">View Offer</button>
+  </div>
+  <div class="card">
+    <div class="emoji">🎬</div>
+    <h4>Clipping</h4>
+    <p>Short-form video campaign opportunities.</p>
+    <button onclick="apply('Clipping')">View Offer</button>
+  </div>
+  <div class="card">
+    <div class="emoji">🎵</div>
+    <h4>Music</h4>
+    <p>Music and audio promotion campaigns.</p>
+    <button onclick="apply('Music')">View Offer</button>
+  </div>
+  <div class="card">
+    <div class="emoji">✨</div>
+    <h4>Logo Promotion</h4>
+    <p>Brand visibility and logo placements.</p>
+    <button onclick="apply('Logo Promotion')">View Offer</button>
+  </div>
+</div>
+
+<h3>Creator Dashboard</h3>
+<div class="section">
+  <strong>📋 My Applications</strong>
+  <p class="muted">Your submitted campaign requests will
+  be managed here once the backend is connected.</p>
+</div>
+<div class="section">
+  <strong>💰 My Earnings</strong>
+  <p class="muted">Approved earnings and payment records
+  will appear here after setup.</p>
+</div>
+<div class="section">
+  <strong>🎧 Support</strong>
+  <p class="muted">Need help with a promotion?</p>
+  <button class="primary" onclick="support()">Contact Support</button>
+</div>
+
+<footer>EnfuEarn © 2026 · Creator Promotion Hub</footer>
+
+<script>
+const tg = window.Telegram?.WebApp;
+tg?.ready();
+tg?.expand();
+
+function go(id){
+  document.getElementById(id).scrollIntoView({
+    behavior:"smooth"
+  });
+}
+function apply(category){
+  if(tg?.showPopup){
+    tg.showPopup({
+      title:category+" Campaign",
+      message:"Campaign applications are not connected yet. Please contact the EnfuEarn team for current offers.",
+      buttons:[{type:"ok",text:"Got it"}]
+    });
+  }else{
+    alert(category+" campaign: applications are not connected yet.");
+  }
+}
+function support(){
+  alert("Support link will be added after you provide your support username.");
+}
+</script>
+</body>
+</html>
